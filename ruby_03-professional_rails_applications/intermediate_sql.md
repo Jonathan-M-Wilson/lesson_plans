@@ -56,15 +56,23 @@ VALUES ('lobster mac n cheese', 1200, 'side'),
 ##### Write queries for the following:
 
 1. What's the total revenue for all items?
- ```sql SELECT sum(revenue) FROM items;```
+ ```sql 
+ SELECT sum(revenue) FROM items;
+ ```
 
 
 1. What's the average revenue for all items?
- ```sql SELECT avg(revenue) FROM items;```
+ ```sql 
+ SELECT avg(revenue) FROM items;
+ ```
 
 
 1. What's the minimum revenue for all items?
- ```sql SELECT min(revenue) FROM items;```
+- 
+
+ ```sql 
+ SELECT min(revenue) FROM items;
+ ```
 
 
 1. What's the maximum revenue for all items?
