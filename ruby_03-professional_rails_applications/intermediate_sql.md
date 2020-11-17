@@ -68,19 +68,21 @@ VALUES ('lobster mac n cheese', 1200, 'side'),
 
 
 1. What's the minimum revenue for all items?
-- 
-
  ```sql 
  SELECT min(revenue) FROM items;
  ```
 
 
 1. What's the maximum revenue for all items?
- ```sql SELECT max(revenue) FROM items;```
+ ```sql 
+ SELECT max(revenue) FROM items;
+ ```
 
 
 1. What the count for items with a name?
- ```sql SELECT count(name) FROM items;```
+ ```sql 
+ SELECT count(name) FROM items;
+ ```
 
 
 Let's create an item that has all NULL values:
@@ -100,19 +102,27 @@ How can we get the revenue based on the course?
 ##### Write queries for the following:
 
 1. Return all `main` courses. Hint: What ActiveRecord method would you use to get this?
- ```sql SELECT * FROM items WHERE course = 'main';```
+ ```sql 
+ SELECT * FROM items WHERE course = 'main';
+ ```
 
 
 1. Return only the names of the `main` courses.
- ```sql sql SELECT name FROM items where course = 'main';```
+ ```sql 
+ SELECT name FROM items where course = 'main';
+ ```
 
 
 1. Return the min and max value for the `main` courses.
- ```sql SELECT min(revenue), max(revenue) FROM items where course = 'main';```
+ ```sql 
+ SELECT min(revenue), max(revenue) FROM items where course = 'main';
+ ```
 
 
 1. What's the total revenue for all `main` courses?
- ```sql SELECT sum(revenue) FROM items WHERE course = 'main';```
+ ```sql 
+ SELECT sum(revenue) FROM items WHERE course = 'main';
+ ```
 
 
 
