@@ -56,19 +56,23 @@ VALUES ('lobster mac n cheese', 1200, 'side'),
 ##### Write queries for the following:
 
 1. What's the total revenue for all items?
-- ```SELECT sum(revenue) FROM items;```
+- ```sql SELECT sum(revenue) FROM items;```
+
 
 1. What's the average revenue for all items?
-- ```SELECT avg(revenue) FROM items;```
+- ```sql SELECT avg(revenue) FROM items;```
+
 
 1. What's the minimum revenue for all items?
-- ```SELECT min(revenue) FROM items;```
+- ```sql SELECT min(revenue) FROM items;```
+
 
 1. What's the maximum revenue for all items?
-- ```SELECT max(revenue) FROM items;```
+- ```sql SELECT max(revenue) FROM items;```
+
 
 1. What the count for items with a name?
-- ```SELECT count(name) FROM items;```
+- ```sql SELECT count(name) FROM items;```
 
 
 Let's create an item that has all NULL values:
@@ -88,16 +92,21 @@ How can we get the revenue based on the course?
 ##### Write queries for the following:
 
 1. Return all `main` courses. Hint: What ActiveRecord method would you use to get this?
-- ```SELECT * FROM items WHERE course = 'main';```
+- ```sql SELECT * FROM items WHERE course = 'main';```
+
 
 1. Return only the names of the `main` courses.
-- ```SELECT name FROM items where course = 'main';```
+- ```sql sql SELECT name FROM items where course = 'main';```
+
 
 1. Return the min and max value for the `main` courses.
-- ```SELECT min(revenue), max(revenue) FROM items where course = 'main';```
+- ```sql SELECT min(revenue), max(revenue) FROM items where course = 'main';```
+
 
 1. What's the total revenue for all `main` courses?
-- ```SELECT sum(revenue) FROM items WHERE course = 'main';```
+- ```sql SELECT sum(revenue) FROM items WHERE course = 'main';```
+
+
 
 
 #### INNER JOINS
@@ -183,6 +192,15 @@ id |         name         | revenue | season_id | id |  name
 This is useful, but we probably don't need all of the information from both tables.
 
 * Can you get it to display only the name for the item and the name for the season?
+
+
+ ```sql 
+ SELECT items.name as item_name, seasons.name as seasons_name FROM items
+ INNER JOIN seasons 
+ ON items.season_id = seasons.id;
+ ```
+ 
+
 * Having two columns with the same name is confusing. Can you customize each heading using `AS`?
 
 It should look like this:
@@ -204,8 +222,19 @@ Now let's combine multiple `INNER JOIN`s to pull data from three tables `items`,
 
 * Write a query that pulls all the category names for `arugula salad`.
   Hint: Use multiple `INNER JOIN`s and a `WHERE` clause.
+  
+  
+   ```sql 
+    SELECT items.name, categories.name FROM items
+    INNER JOIN item_categories ON items.id = item_categories.item_id
+    INNER JOIN categories ON categories.id = item_categories.category_id
+    WHERE items.name = 'arugula salad';
+    ```
+
 
 Can you get your return value to look like this?
+
+
 
 ```sql
 name          |    name
@@ -218,6 +247,15 @@ arugula salad | vegetarian
 ```
 
 Can you change the column headings?
+
+
+```sql 
+  SELECT items.name as item_name, categories.name as category_name FROM items
+  INNER JOIN item_categories ON items.id = item_categories.item_id
+  INNER JOIN categories ON categories.id = item_categories.category_id
+  WHERE items.name = 'arugula salad';
+  ```
+
 
 ```sql
 item_name     | category_name
