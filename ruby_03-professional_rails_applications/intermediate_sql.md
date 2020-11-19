@@ -350,6 +350,13 @@ id  |         name        | revenue | season_id | id |  name
 What do you think a `RIGHT OUTER JOIN` will do?
 
 * Write a query to test your guess.
+```sql
+SELECT *
+FROM items i
+RIGHT OUTER JOIN seasons s
+ON i.season_id = s.id;
+```
+
 * Insert data into the right table that will not get returned on an `INNER JOIN`.
 
 ### Subqueries
@@ -388,10 +395,37 @@ id |         name         | revenue | season_id
 
 1. Without looking at the previous solution, write a `WHERE` clause that returns the items that have a revenue less than the average revenue.
 
+```sql
+SELECT * FROM items
+WHERE revenue < (SELECT avg(revenue) FROM items);
+```
+
 ### Additional Challenges
 
 * Write a query that returns the sum of all items that have a category of dinner.
+
+```sql
+SELECT SUM(i.revenue), c.name FROM items i
+JOIN item_categories ic
+ON i.id = ic.item_id
+JOIN categories c
+ON c.id = ic.category_id
+WHERE c.name = 'dinner'
+GROUP BY c.name;
+```
+
 * Write a query that returns the sum of all items for each category. The end result should look like this:
+
+```sql
+SELECT SUM(i.revenue), c.name FROM items i
+JOIN item_categories ic
+ON i.id = ic.item_id
+JOIN categories c
+ON c.id = ic.category_id
+GROUP BY c.name;
+```
+
+
 ```sql
 name       | sum
 -----------+------
